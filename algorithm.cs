@@ -1,4 +1,3 @@
-using Algorithms.Sudoku;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,6 +91,33 @@ namespace Algorithms.TOH
                 MoveCount);
 
             Steps.Add(new StepResult(step, FirstRod.Disks, SecondRod.Disks, ThirdRod.Disks));
+        }
+    }
+
+    public class Rod
+    {
+        public int Index { get; set; }
+        public Stack<int> Disks { get; set; }
+        public Rod(int index, Stack<int> disks)
+        {
+            Index = index;
+            Disks = disks;
+        }
+    }
+
+    public class StepResult
+    {
+        public string Description { get; set; }
+        public int[][] Data { get; set; }
+
+        public StepResult(string description, params Stack<int>[] rods)
+        {
+            Description = description;
+            Data = new[]{
+                rods[0].ToArray(),
+                rods[1].ToArray(),
+                rods[2].ToArray()
+            };
         }
     }
 }
